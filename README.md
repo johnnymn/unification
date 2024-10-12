@@ -12,14 +12,14 @@ Since this library is not available in Clojars or other package repositories, yo
 1. Clone or download the source code from the repository.
 2. Ensure the namespaces are properly included in your project files.
 3. Import the required namespace:
-"""
+```
 (ns your-namespace
   (:require [unification.db :as db]))
-"""
+```
 
 ### Example Usage:
 1. Basic Fact Matching:
-"""
+```
 (def facts
   '[(likes alice pizza)
     (likes bob ice-cream)
@@ -27,10 +27,9 @@ Since this library is not available in Clojars or other package repositories, yo
 
 (db/query '(likes ?who pizza) facts)
 ;; => [{'?who 'alice} {'?who 'carol}]
-
-"""
+```
 2. Matching with Multiple Variables:
-"""
+```
 (def facts
   '[(likes alice pizza)
     (likes bob ice-cream)])
@@ -38,7 +37,17 @@ Since this library is not available in Clojars or other package repositories, yo
 (db/query '(likes ?who ?what) facts)
 ;; => [{'?who 'alice, '?what 'pizza}
 ;;     {'?who 'bob, '?what 'ice-cream}]
-"""
+```
+3. Nested Query:
+```
+(def facts
+  '[(and (likes alice pizza) (dislikes alice broccoli))
+    (and (likes bob pizza) (dislikes bob carrots))])
+
+(db/query '(and (likes ?who pizza) (dislikes ?who broccoli)) facts)
+;; => [{'?who 'alice}]
+
+```
 
 ## License
 
