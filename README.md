@@ -49,6 +49,9 @@ Since this library is not available in Clojars or other package repositories, yo
 
 ```
 
+## TODO
+1. Implement logic operators.
+
 ## License
 
 Copyright © 2024 Johnny M.
