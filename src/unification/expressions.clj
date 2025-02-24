@@ -8,8 +8,8 @@
   (and (symbol? exp) (boolean (re-find #"^\?" (name exp)))))
 
 (defn substitute
-  "Substitutes the variables in expression git the 
-  corresponding values in a substitution map, if 
+  "Substitutes the variables in expression git the
+  corresponding values in a substitution map, if
   no matches are found, return the expression."
   [exp subs]
   (if (variable? exp)
